@@ -7,10 +7,14 @@ line and uses StdRandom.uniform() to generate a random sequence of integers betw
 0 and N – 1. Run experiments to validate the hypothesis that the number of
 integers generated before the first repeated value is found is ~√(pi)N/2.
 
+- Make a program that detects how many times it needs to generate random value before a value is seen twice.
+
 ## Coupon collector problem.
 Coupon collector problem. Generating random integers as in the previous exercise,
 run experiments to validate the hypothesis that the number of integers generated
 before all possible values are generated is ~N HN.
+
+- Make a program that detects how many times it needs to generate random value before all values has been seen.
 
 ## Deck sort
 Explain how you would put a deck of cards in order by suit (in the
