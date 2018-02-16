@@ -56,7 +56,7 @@ fmt.Println(RunTestDuplicate(365, 1000))            // This one will printout th
 ## Coupon collector problem.
 Generating random integers as in the previous exercise run experiments to validate the hypothesis that the number of integers generated before all possible values are generated is ~N HN.
 
-Basicly the same as before. I ran tests and experiments. First one is with N of 100. How many integer generations does it take to have seen all possible values from 1 to 100?. I made the algorithms and got these results shown below:
+Basicly the same as before. I ran tests and experiments. First one is with N of 100. How many integer generations does it take to have seen all possible values from 1 to N?. I made the algorithms and got these results shown below:
 
 ```golang
 fmt.Println(RunTestCoupons(50, 10000)) //-> 225.1315
