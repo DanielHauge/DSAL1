@@ -4,7 +4,10 @@ This is the hand-in paper for Datastructure & Algorithms course. It consists of 
 I've chossen to make all experiments and programs in the language "Golang".
 
 ## Birthday Experiencement
+#### Description 
 Write a program that takes an integer N from the command line and generate a random sequence of integers between 0 and N – 1. Run experiments to validate the hypothesis that the number of integers generated before the first repeated value is found is ~√(pi)N/2.
+
+#### Results & comments:
 
 My results to this problem is as follows:
 ```
@@ -29,7 +32,10 @@ A milion test runs give:
 ```
 The difference is ~0.656. Which gets higher than previus. But it stays about the same offset for any value put in to N. This indicates it is very close to the actual formular.
 
-The big O notation is ofcause the formular. O(√(pi)N/2) But worst case scenario, it could also be O(N). It could potentially, go through the whole available valuespace before it finds a duplicate. Which is N. I've calculated this by the following function.
+The big O notation is ofcause the formular. O(√(pi)N/2) But worst case scenario, it could also be O(N). It could potentially, go through the whole available valuespace before it finds a duplicate. Which is N. 
+
+#### Essential Code:
+I've calculated this by the following function.
 
 ```golang
 func NumberDuplicate(n int)int{
@@ -54,8 +60,10 @@ fmt.Println(RunTestDuplicate(365, 1000))            // This one will printout th
 ```
 
 ## Coupon collector problem.
+#### Description
 Generating random integers as in the previous exercise run experiments to validate the hypothesis that the number of integers generated before all possible values are generated is ~N HN.
 
+#### Results & comments
 Basicly the same as before. I ran tests and experiments. First one is with N of 100. How many integer generations does it take to have seen all possible values from 1 to N?. I made the algorithms and got these results shown below:
 
 ```golang
@@ -68,6 +76,8 @@ fmt.Println(RunTestCoupons(5000, 100)) //-> 45867.37
 fmt.Println(RunTestCoupons(25000, 100)) //-> 264603.78
 ```
 Based purely on the outlook of the result, we can easily say that big o notation is definitly bigger than N. And grows exponentially. This is logically, since before we are done. We need to have seen all the possible values that goes from 0 to N. So the ammount of integers that needs to be generated needs to be bigger than N. Since we have randomized integer generation, it is very likely that an integer will be generated that we have allready seen before. So applying that to higher values of N. We must conclude that, by high N the likelyhood of getting a duplicate gets higher and higher the bigger N becomes. Also the less likely it is to generate that specific last value.
+
+#### Essential Code
 
 The fucntion to run this test is as follows:
 ```golang
@@ -95,6 +105,7 @@ func Couponons(n int)int{
 ``` 
 
 ## Deck sort
+#### Description
 Explain how you would put a deck of cards in order by suit (in the
 order spades, hearts, clubs, diamonds) and by rank within each suit, with the restriction
 that the cards must be laid out face down in a row, and the only allowed operations are
