@@ -59,13 +59,13 @@ Generating random integers as in the previous exercise run experiments to valida
 Basicly the same as before. I ran tests and experiments. First one is with N of 100. How many integer generations does it take to have seen all possible values from 1 to 100?. I made the algorithms and got these results shown below:
 
 ```golang
-fmt.Println(RunTestCoupons(50, 10000)) -> 225.1315
-fmt.Println(RunTestCoupons(100, 10000)) -> 518.729
-fmt.Println(RunTestCoupons(200, 10000)) -> 1178.5208
-fmt.Println(RunTestCoupons(500, 10000)) -> 3390.9957
-fmt.Println(RunTestCoupons(1000, 10000)) -> 7466.9836
-fmt.Println(RunTestCoupons(5000, 100)) -> 45867.37
-fmt.Println(RunTestCoupons(25000, 100)) -> 264603.78
+fmt.Println(RunTestCoupons(50, 10000)) //-> 225.1315
+fmt.Println(RunTestCoupons(100, 10000)) //-> 518.729
+fmt.Println(RunTestCoupons(200, 10000)) //-> 1178.5208
+fmt.Println(RunTestCoupons(500, 10000)) //-> 3390.9957
+fmt.Println(RunTestCoupons(1000, 10000)) //-> 7466.9836
+fmt.Println(RunTestCoupons(5000, 100)) //-> 45867.37
+fmt.Println(RunTestCoupons(25000, 100)) //-> 264603.78
 ```
 Based purely on the outlook of the result, we can easily say that big o notation is definitly bigger than N. And grows exponentially. This is logically, since before we are done. We need to have seen all the possible values that goes from 0 to N. So the ammount of integers that needs to be generated needs to be bigger than N. Since we have randomized integer generation, it is very likely that an integer will be generated that we have allready seen before. So applying that to higher values of N. We must conclude that, by high N the likelyhood of getting a duplicate gets higher and higher the bigger N becomes. Also the less likely it is to generate that specific last value.
 
