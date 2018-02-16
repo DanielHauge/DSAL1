@@ -58,7 +58,7 @@ Generating random integers as in the previous exercise run experiments to valida
 
 Basicly the same as before. I ran tests and experiments. First one is with N of 100. How many integer generations does it take to have seen all possible values from 1 to 100?. I made the algorithms and got these results shown below:
 
-```
+```golang
 fmt.Println(RunTestCoupons(50, 10000)) -> 225.1315
 fmt.Println(RunTestCoupons(100, 10000)) -> 518.729
 fmt.Println(RunTestCoupons(200, 10000)) -> 1178.5208
