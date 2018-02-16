@@ -59,6 +59,25 @@ With this, i made another algorithm that would run through the tests N amount of
 fmt.Println(RunTestDuplicate(365, 1000000))            // This one will printout the average of a milion tests with 365 days as N.
 ```
 
+The Running of many tests and averaging the reults is below:
+```golang
+func RunTestDuplicate(n int, t int)float64{
+
+
+	Results := []int{}
+
+	for i:=t; i>0; i--{
+		Results = append(Results, NumberDuplicate(n))
+	}
+
+	var total float64 = 0
+	for _, value := range Results{
+		total += float64(value)
+	}
+	return total/float64(len(Results))
+}
+```
+
 ## Coupon collector problem.
 #### Description
 Generating random integers as in the previous exercise run experiments to validate the hypothesis that the number of integers generated before all possible values are generated is ~N HN.
