@@ -56,7 +56,7 @@ func NumberDuplicate(n int)int{
 ```
 With this, i made another algorithm that would run through the tests N amount of times and take the average. This way i could call and make tests like this:
 ```golang
-fmt.Println(RunTestDuplicate(365, 1000))            // This one will printout the average of a thousand tests with 365 days as N.
+fmt.Println(RunTestDuplicate(365, 1000000))            // This one will printout the average of a milion tests with 365 days as N.
 ```
 
 ## Coupon collector problem.
