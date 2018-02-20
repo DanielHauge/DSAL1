@@ -17,33 +17,27 @@ func main() {
 	fmt.Println("A milion test runs give: ")
 	fmt.Println(RunTestDuplicate(100000, 100000))
 	*/
-	// Coupons problem 1.4.45
-	fmt.Println(RunTestCoupons(25000, 100))
+	///////// Coupons problem 1.4.45
+	//fmt.Println(RunTestCoupons(25000, 100))
 
 
 
-
-	//deck := CreateNewDeck()
-
+	//////// Deck Sorting problem
+	
 	/*
+	deck := CreateNewDeck()
 	CleanArray := DeckToCleanIntArray(deck)
-
 	for _, c := range CleanArray{
 		log.Println(c)
 	}
-
 	NewDeck := CleanIntArrayToDeck(CleanArray)
-
 	for _, r := range NewDeck{
 		log.Println(getRankFromInt(r.rank)+" of "+getSuitFromInt(r.suit))
 	}
-
-
 	shuffled := ShuffleDeck(deck)
 	for _, r := range shuffled{
 		log.Println(getRankFromInt(r.rank)+" of "+getSuitFromInt(r.suit))
 	}
-
 	log.Println("It got shuffled -> Now to sorting \n\n")
 
 	SortedDeck := SortDeck(shuffled)
