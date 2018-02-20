@@ -131,12 +131,108 @@ that the cards must be laid out face down in a row, and the only allowed operati
 to check the values of two cards and to exchange two cards (keeping them face down).
 
 #### Results & Comments:
-balba
+This exercise is very open for interpretation and open for many kinds of solutions. When translating the idea from physical cards to a program, this is where you can pick easy solutions or more accurate solutions. But in essense this problem can be solved by many ways. I've chosen this following way:
+
+- 1. Start at the second first card from the left
+- 2. Pick up and look at current card Card
+- 3. If no additional card is being looked at appart from current card, pickup card to the left of that. Otherwise put down additional card and pick up card left of that.
+- 4. If Additional card is higher in suit/rank than current card, go to step 3 swap cards.
+- 5. Advance current card and Go to step 2 until current card cannot advance.
+
+This is insertion sort. It could have been done with selection sort and shell sort too. Depending on how much we are allowed to remember. 
+
+When it comes to translating this into a program, it is quite open for interpretation and how you'd go about doing it. I've chosen a little bit of both worlds. I've chosen to have the data structure in the accurate format, Suit and Rank. But when it comes to sorting. I'm transforming it into a format which is alot easier to sort and work with, which is just a number. In essense, the suit is basicly just something that comes fist and then rank afterwards. So you could either map each card to a position into a integer that would span 1 to 52. Or as i have done, is to just treat suits as a much higher value that is being appended to the rank. So Ace of diamonds is basicly, the last suit, but the first rank. You could say that last suit is the 4th suit in the collection, and give the suit the number 4. Then we coukd first sort suits and then ranks afterwards in 5 different sorts. But, as i've done is to append them together. Time suitnumber with 100 and plus it. So ace of diamonds would become the number 401. five of clubs will become 305, queen of hearts will become 212 etc. This way, we can sort these litle larger values easier in one go. Below is shown how the Suit/Rank struct can be transformed into easily sortable int array.
+
+- Card
+
+```golang
+type Card struct {
+	suit int
+	rank int
+}
+```
+
+- array of cards being transformed into easily sortable array and back again.
+
+```golang
+func DeckToCleanIntArray(Deck []Card)[]int{
+	CleanIntArray := []int{}
+
+	for _, c := range Deck{
+		CleanIntArray = append(CleanIntArray, c.suit*100+c.rank)
+	}
+	return CleanIntArray
+}
+
+
+func CleanIntArrayToDeck(array []int)[]Card{
+	Deck := []Card{}
+
+	for _, c := range array{
+		if c > 350{
+			Deck = append(Deck, Card{suit:4, rank:c-400})
+		} else if c > 250{
+			Deck = append(Deck, Card{suit:3, rank:c-300})
+		}else if c > 150{
+			Deck = append(Deck, Card{suit:2, rank:c-200})
+		}else {
+			Deck = append(Deck, Card{suit:1, rank:c-100})
+		}
+	}
+	return Deck
+}
+```
+
+Furthermore, i've implemented some helper fucntions to better handle the features and such. To see full version, visit github page on https://github.com/Games-of-Threads/DSAL1-DFH/blob/master/DeckSorting.go
+
+```golang
+func getSuitFromInt(s int)string
+func CreateNewDeck()[]Card
+func getRankFromInt(r int)string
+func ShuffleIntArray(input []int)[]int
+func ShuffleDeck(Deck []Card)[]Card
+```
 
 
 
 #### Essential Code: 
+To Run the deck sorting, any of the functions can be used independendly. But here is a showcase of some code that would have 100% functionality coverage.
 ```golang
-code
+deck := CreateNewDeck()
+	CleanArray := DeckToCleanIntArray(deck)
+	for _, c := range CleanArray{
+		log.Println(c)
+	}
+	NewDeck := CleanIntArrayToDeck(CleanArray)
+	for _, r := range NewDeck{
+		log.Println(getRankFromInt(r.rank)+" of "+getSuitFromInt(r.suit))
+	}
+	shuffled := ShuffleDeck(deck)
+	for _, r := range shuffled{
+		log.Println(getRankFromInt(r.rank)+" of "+getSuitFromInt(r.suit))
+	}
+	log.Println("It got shuffled -> Now to sorting \n\n")
+
+	SortedDeck := SortDeck(shuffled)
+	log.Println(len(SortedDeck))
+	for _, r := range SortedDeck{
+		log.Println(getRankFromInt(r.rank)+" of "+getSuitFromInt(r.suit))
+	}
 ```
 
+The Insertion Sorting algorithm is as follows:
+
+```golang
+func SortArray(input []int)[]int{
+	array := input
+	for i := 1; i < len(array); i++ {
+		for j := i; j > 0 && array[j] < array[j - 1]; j-- {
+			array[j], array[j-1] = array[j-1], array[j]
+		}
+	}
+
+	return array
+}
+```
+
+This is the essential part to make it run. It is the sorting of an integer array.
