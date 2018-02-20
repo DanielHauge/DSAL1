@@ -1,6 +1,6 @@
 # 1. Compulsory algorithm Assignment - Experiments and Sorting.
 
-Daniel F. Hauge
+Daniel F. Hauge (cph-dh136)
 
 This is the hand-in paper for Datastructure & Algorithms course. It consists of 3 bullets points (Subjects) which needs attention. This paper will include results, comments to results and the essential code.
 
