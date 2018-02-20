@@ -190,9 +190,17 @@ Furthermore, i've implemented some helper fucntions to better handle the feature
 
 ```golang
 func getSuitFromInt(s int)string
+```
+```golang
 func CreateNewDeck()[]Card
+```
+```golang
 func getRankFromInt(r int)string
+```
+```golang
 func ShuffleIntArray(input []int)[]int
+```
+```golang
 func ShuffleDeck(Deck []Card)[]Card
 ```
 
