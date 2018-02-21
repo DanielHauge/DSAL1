@@ -3,7 +3,9 @@ package main
 import (
 	"math/rand"
 
-	"fmt"
+	"time"
+
+	"log"
 )
 
 
@@ -17,12 +19,14 @@ func main() {
 	fmt.Println("A milion test runs give: ")
 	fmt.Println(RunTestDuplicate(100000, 100000))
 	*/
+
 	///////// Coupons problem 1.4.45
+	/*
 	fmt.Print("Result: ")
 	fmt.Print(RunTestCoupons(25000, 100))
 	fmt.Print(" - Expected: ")
 	fmt.Print(ExpectedCoupons(25000))
-
+	*/
 
 
 	//////// Deck Sorting problem
@@ -51,8 +55,46 @@ func main() {
 
 	*/
 
+	shuffled := CreateRandomArray(1500)
+
+	start := time.Now()
+
+	sorted := BubbleSort(shuffled)
+
+	elapsed := time.Since(start)
+	log.Println(elapsed)
+	log.Println(sorted[0])
+
+	start = time.Now()
+
+	NoChange := BubbleSort(sorted)
+
+	elapsed = time.Since(start)
+	log.Println(elapsed)
+	log.Println(NoChange[0])
 
 
+	num := random(0,1499)
+	sorted[0], sorted[num] = sorted[num], sorted[0]
+
+	start = time.Now()
+
+	Litleinput := BubbleSort(sorted)
+
+	elapsed = time.Since(start)
+	log.Println(elapsed)
+	log.Println(Litleinput[0])
+
+	num = random(0,1499)
+	sorted[len(sorted)-1], sorted[num] = sorted[num], sorted[len(sorted)-1]
+
+	start = time.Now()
+
+	LastInput := BubbleSort(sorted)
+
+	elapsed = time.Since(start)
+	log.Println(elapsed)
+	log.Println(LastInput[0])
 
 
 
