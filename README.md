@@ -89,15 +89,15 @@ Generating random integers as in the previous exercise run experiments to valida
 Basicly the same as before. I ran tests and experiments. First one is with N of 100. How many integer generations does it take to have seen all possible values from 1 to N?. I made the algorithms and got these results shown below:
 
 ```golang
-fmt.Println(RunTestCoupons(50, 10000)) //-> 225.1315
-fmt.Println(RunTestCoupons(100, 10000)) //-> 518.729
-fmt.Println(RunTestCoupons(200, 10000)) //-> 1178.5208
-fmt.Println(RunTestCoupons(500, 10000)) //-> 3390.9957
-fmt.Println(RunTestCoupons(1000, 10000)) //-> 7466.9836
-fmt.Println(RunTestCoupons(5000, 100)) //-> 45867.37
-fmt.Println(RunTestCoupons(25000, 100)) //-> 264603.78
+fmt.Println(RunTestCoupons(50, 10000)) //-> Result: 225.01702 - Expected: 224.96026691647114 
+fmt.Println(RunTestCoupons(100, 10000)) //-> Result: 519.09618 - Expected: 518.737751763962
+fmt.Println(RunTestCoupons(200, 10000)) //-> 1176.13241 - Expected: 1175.6061896242893
+fmt.Println(RunTestCoupons(500, 10000)) //-> Result: 3390.9957 - Expected: 3396.41171499526
+fmt.Println(RunTestCoupons(1000, 10000)) //-> Result: 7466.9836 - Expected: 7485.470860550343
+fmt.Println(RunTestCoupons(5000, 100)) //-> Result: 45867.37 - Expected: 45472.54426492202
+fmt.Println(RunTestCoupons(25000, 100)) //-> Result: 264603.78 - Expected: 267596.6692154637
 ```
-Based purely on the outlook of the result, we can easily say that big o notation is definitly bigger than N. And grows exponentially. This is logically, since before we are done. We need to have seen all the possible values that goes from 0 to N. So the ammount of integers that needs to be generated needs to be bigger than N. Since we have randomized integer generation, it is very likely that an integer will be generated that we have allready seen before. So applying that to higher values of N. We must conclude that, by high N the likelyhood of getting a duplicate gets higher and higher the bigger N becomes. Also the less likely it is to generate that specific last value.
+Based purely on the outlook of the result, we can easily say that big o notation is definitly bigger than N. And grows exponentially. This is logically, since before we are done. We need to have seen all the possible values that goes from 0 to N. So the ammount of integers that needs to be generated needs to be bigger than N. Since we have randomized integer generation, it is very likely that an integer will be generated that we have allready seen before. So applying that to higher values of N. We must conclude that, by high N the likelyhood of getting a duplicate gets higher and higher the bigger N becomes. Also the less likely it is to generate that specific last value. Also, we can see the expected formular is very close to the actual result, which may indicate that the algorithms follows the formular.
 
 #### Essential Code
 
@@ -125,6 +125,17 @@ func Couponons(n int)int{
 	return count
 }
 ``` 
+
+Expected is calculated by the following function:
+```golang
+func ExpectedCoupons(n int)float64{
+	H := 0.0
+	for i := 1; i<=n; i++{
+		H+=1/(float64(i))
+	}
+	return float64(n)*H;
+}
+```
 
 ## Deck sort
 #### Description
