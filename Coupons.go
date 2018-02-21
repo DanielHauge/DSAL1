@@ -26,6 +26,19 @@ func Couponons(n int)int{
 	return count
 }
 
+func ExpectedCoupons(n int)float64{
+
+
+	H := 0.0
+
+	for i := 1; i<=n; i++{
+		H+=1/(float64(i))
+	}
+
+	return float64(n)*H;
+
+}
+
 
 func ThenFinalyCheck(Chart map[int]bool, n int)bool{
 

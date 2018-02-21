@@ -18,7 +18,10 @@ func main() {
 	fmt.Println(RunTestDuplicate(100000, 100000))
 	*/
 	///////// Coupons problem 1.4.45
-	//fmt.Println(RunTestCoupons(25000, 100))
+	fmt.Print("Result: ")
+	fmt.Print(RunTestCoupons(25000, 100))
+	fmt.Print(" - Expected: ")
+	fmt.Print(ExpectedCoupons(25000))
 
 
 
